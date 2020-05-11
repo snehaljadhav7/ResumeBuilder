@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<div class="main">
+  <div class="row data-list">
+    <div class="col-3"><p></p></div>
+    <div class="col-6">
+      <table>
+        {% if object_list %}
+        <tr><th> Resume list: Click on your name to generate pdf of your resume. </th></tr>
+        {% for resume in object_list %}
+        <tr><td style="padding-bottom: 10px; padding-top: 10px">
+          <a href="{% url 'pdf' resume_id=resume.pk %}">
+            {{resume.First_Name }} {{ resume.Last_Name }}
+          </a> : {{ resume.Email}}
+        </td></tr>
+        {% endfor %}
+        {% endif %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}
